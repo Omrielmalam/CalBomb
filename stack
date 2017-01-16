@@ -1,0 +1,72 @@
+stack = []
+stackOperator = []
+
+class Node:
+
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+
+    def __str__(self):
+        return str(self.data)
+
+
+class LinkedList:
+
+    def __init__(self):
+        self.head = None
+        self.curr = None
+        self.tail = None
+
+    def __iter__(self):
+        return self
+
+    def next(self):
+        if self.head and not self.curr:
+            self.curr = self.head
+            return self.curr
+        elif self.curr.next:
+            self.curr = self.curr.next
+            return self.curr
+        else:
+            raise StopIteration
+
+    def append(self, data):
+        n = Node(data)
+        if not self.head:
+            self.head = n
+            self.tail = n
+        else:
+            self.tail.next = n
+            self.tail = self.tail.next
+
+    def printList(self):
+        if self.head != None:
+            current = self.head
+            print('LinkedList [',end="") # +str(current.data)
+            print(current,",",end="")
+            while current.next != None:
+                current = current.next
+                print(current,",",end="")
+            print("]",end="")
+
+    def reverse(head):
+          current = head
+          previous = None
+          while current:
+            next = current.next
+            current.next = previous   # None, first time round.
+            previous = current        # Used in the next iteration.
+            current = next            # Move to next node.
+          head = previous
+# Add 5 nodes
+ll = LinkedList()
+X = input()
+X=int(X)
+Y=X%10
+while X>0:
+   ll.append(X%10)
+   X=X//10
+#ll.reverse()
+ll.printList()
+# print out the list
