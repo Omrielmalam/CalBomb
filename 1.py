@@ -164,7 +164,6 @@ def Plus(list1, list2):
         if p2: p2 = p2['get']('prev')
     return l
 
-
 def Sub(list1, list2):
     Flag = None
     def Add(x, y):
@@ -216,7 +215,8 @@ def Sub(list1, list2):
           if p2: p2 = p2['get']('prev')
     elif LenL1 == LenL2:
       p1, p2 = list1['get']('head'), list2['get']('head')
-      while p1['get']('data') != p2['get']('data'):
+      i=0
+      while i < LenL1:
         if p1['get']('data') < p2['get']('data'):
              p2, p1 = list1['get']('tail'), list2['get']('tail')
              while(p1 or p2):
@@ -248,6 +248,7 @@ def Sub(list1, list2):
         else:
             p1= p1['get']('next')
             p2= p2['get']('next')
+            i=i+1
 
     return l
    
